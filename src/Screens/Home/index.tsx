@@ -11,6 +11,9 @@ export default function Home() {
   //  O useState retorna um array com dois elementos: o valor atual do estado e uma função para atualizar esse valor.
   //  O useState recebe como parâmetro o valor inicial do estado, que pode ser de qualquer tipo.
   const [participantName, setParticipantName] = useState(''); //useState é um hook do React que permite adicionar estado a um componente funcional.
+  
+  const [eventName, setEventName] = useState('Nome do Evento'); 
+  const [eventDate, setEventDate] = useState('Segunda Feira, 24 de Março de 2022');
   function handleParticipantAdd() {
     if(participants.includes(participantName)) {
       return Alert.alert("Participante já existe", "Já existe um participante na lista com esse nome.")
