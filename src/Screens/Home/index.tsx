@@ -1,6 +1,6 @@
 import { Text, View, TouchableOpacity, Alert, TextInput } from 'react-native';
 import { styles } from './style';
-import { FlatList} from 'react-native-gesture-handler';
+import { FlatList } from 'react-native-gesture-handler';
 import { Participant } from '../../Components/Participant';
 import { useState } from 'react';
 
@@ -11,15 +11,15 @@ export default function Home() {
   //  O useState retorna um array com dois elementos: o valor atual do estado e uma função para atualizar esse valor.
   //  O useState recebe como parâmetro o valor inicial do estado, que pode ser de qualquer tipo.
   const [participantName, setParticipantName] = useState(''); //useState é um hook do React que permite adicionar estado a um componente funcional.
-  
-  const [eventName, setEventName] = useState('Nome do Evento'); 
+
+  const [eventName, setEventName] = useState('Nome do Evento');
   const [eventDate, setEventDate] = useState('Segunda Feira, 24 de Março de 2022');
   function handleParticipantAdd() {
-    if(participants.includes(participantName)) {
+    if (participants.includes(participantName)) {
       return Alert.alert("Participante já existe", "Já existe um participante na lista com esse nome.")
     }
 
-    setParticipants( prevState => [ ...prevState, participantName])
+    setParticipants(prevState => [...prevState, participantName])
     setParticipantName(''); //setParticipantName é uma função que atualiza o valor do estado participantName, que é o nome do participante que será adicionado à lista.
   }
 
@@ -42,10 +42,20 @@ export default function Home() {
   }
   return (
     <View style={styles.container}>
-      <Text style={styles.eventName}>Nome do Evento
-      </Text>
-      <Text key="1" style={styles.eventDate}>Segunda Feira, 24 de Março de 2022</Text>
+      <TextInput 
+        style={styles.eventName}
+        value={eventName}
+        onChangeText={setEventName}
+        placeholderTextColor="#6B6B6B"
+        placeholder="Digite o nome do evento" />
 
+      <TextInput 
+        style={styles.eventDate}
+        value={eventDate}
+        onChangeText={setEventDate}
+        placeholderTextColor="#6B6B6B"
+        placeholder="Digite a data do evento" />
+        
       <View style={styles.formParticipant}>
         <TextInput style={styles.input}
           placeholder='Nome do Participante'
@@ -64,19 +74,19 @@ export default function Home() {
 
         data={participants} //data é uma propriedade que recebe um array de dados que serão renderizados na lista
         keyExtractor={item => item} //keyExtractor é uma função que retorna uma string única para cada item da lista
-        renderItem={ ({item}) => ( //renderItem é uma função que retorna o componente que será renderizado para cada item da lista
+        renderItem={({ item }) => ( //renderItem é uma função que retorna o componente que será renderizado para cada item da lista
           <Participant key={item} name={item} onRemove={() => handleParticipantRemove(item)} />)
         }
         contentContainerStyle={{ paddingBottom: 200 }} //contentContainerStyle é uma propriedade que permite estilizar o conteúdo da lista
         showsVerticalScrollIndicator={false} //showsVerticalScrollIndicator é uma propriedade que permite esconder o indicador de rolagem vertical da lista
-        ListEmptyComponent={() =>(
+        ListEmptyComponent={() => (
           <Text style={styles.listEmpty}>
             Ninguém chegou no evento ainda? Adicione participantes a sua lista de presença.
           </Text>
         )}
-        />
-  
-   </View>
+      />
+
+    </View>
 
   )
 }
