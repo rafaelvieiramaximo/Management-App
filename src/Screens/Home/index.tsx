@@ -42,20 +42,20 @@ export default function Home() {
   }
   return (
     <View style={styles.container}>
-      <TextInput 
+      <TextInput
         style={styles.eventName}
         value={eventName}
         onChangeText={setEventName}
         placeholderTextColor="#6B6B6B"
         placeholder="Digite o nome do evento" />
 
-      <TextInput 
+      <TextInput
         style={styles.eventDate}
         value={eventDate}
         onChangeText={setEventDate}
         placeholderTextColor="#6B6B6B"
         placeholder="Digite a data do evento" />
-        
+
       <View style={styles.formParticipant}>
         <TextInput style={styles.input}
           placeholder='Nome do Participante'
@@ -77,7 +77,7 @@ export default function Home() {
         renderItem={({ item }) => ( //renderItem é uma função que retorna o componente que será renderizado para cada item da lista
           <Participant key={item} name={item} onRemove={() => handleParticipantRemove(item)} />)
         }
-        contentContainerStyle={{ paddingBottom: 200 }} //contentContainerStyle é uma propriedade que permite estilizar o conteúdo da lista
+        contentContainerStyle={{ height: 10000 }} //contentContainerStyle é uma propriedade que permite estilizar o conteúdo da lista
         showsVerticalScrollIndicator={false} //showsVerticalScrollIndicator é uma propriedade que permite esconder o indicador de rolagem vertical da lista
         ListEmptyComponent={() => (
           <Text style={styles.listEmpty}>
