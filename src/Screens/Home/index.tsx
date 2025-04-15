@@ -47,7 +47,7 @@ export default function Home() {
         <TextInput style={styles.input}
           placeholder='Nome do Participante'
           placeholderTextColor="#6B6B6B"
-          onChangeText={o => setParticipantName(o)}
+          onChangeText={setParticipantName}
           value={participantName} //onChangeText é uma propriedade que recebe uma função que será chamada quando o texto do input mudar
         />
         <TouchableOpacity style={styles.button_plus} onPress={handleParticipantAdd}>
