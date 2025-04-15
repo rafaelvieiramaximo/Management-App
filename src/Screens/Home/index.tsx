@@ -17,6 +17,7 @@ export default function Home() {
     }
 
     setParticipants( prevState => [ ...prevState, participantName])
+    setParticipantName(''); //setParticipantName é uma função que atualiza o valor do estado participantName, que é o nome do participante que será adicionado à lista.
   }
 
   function handleParticipantRemove(name: string) {
@@ -46,7 +47,8 @@ export default function Home() {
         <TextInput style={styles.input}
           placeholder='Nome do Participante'
           placeholderTextColor="#6B6B6B"
-          onChangeText={o => setParticipantName(o)} //onChangeText é uma propriedade que recebe uma função que será chamada quando o texto do input mudar
+          onChangeText={o => setParticipantName(o)}
+          value={participantName} //onChangeText é uma propriedade que recebe uma função que será chamada quando o texto do input mudar
         />
         <TouchableOpacity style={styles.button_plus} onPress={handleParticipantAdd}>
           <Text style={styles.text_button}>
